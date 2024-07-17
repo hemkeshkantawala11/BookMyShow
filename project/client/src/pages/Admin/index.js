@@ -15,6 +15,10 @@ function Admin() {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         });
+        console.log(""+user.data.data);
+        if(!user){
+            navigate("/admin");
+        }
 
         if (user.data.data.role === "partner" ) {
             navigate("/partner");
@@ -27,13 +31,13 @@ function Admin() {
         }
         else
         {
-
+            navigate("/admin");
         }
     }
 
-    useEffect(() => {
-        checkUser()
-    }, []);
+    checkUser();
+
+
 
 
         const tabItems = [
@@ -54,6 +58,7 @@ function Admin() {
 
   return (
     <div>
+
         <h1>Admin Page</h1>
 
 
@@ -66,3 +71,6 @@ function Admin() {
 }
 
 export default Admin
+
+
+

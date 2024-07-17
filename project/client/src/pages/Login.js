@@ -17,6 +17,7 @@ function Login() {
     try {
       const response = await LoginUser(values);
       if (response.success) {
+
         message.success(response.message);
         localStorage.setItem('token', response.token);
 
@@ -41,7 +42,7 @@ function Login() {
         message.error(response.message);
       }
     } catch (error) {
-      message.error(error.message);
+      message.error(error.message + " Please try again");
     }
   };
 
